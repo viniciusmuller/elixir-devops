@@ -7,6 +7,17 @@
 # General application configuration
 import Config
 
+defmodule Helpers do
+  def get_grafana_config() do
+    [
+      host: "http://grafana:3000",
+      username: "admin",
+      password: "admin",
+      upload_dashboards_on_start: Mix.env() != :test
+    ]
+  end
+end
+
 config :hello,
   ecto_repos: [Hello.Repo]
 
@@ -21,13 +32,7 @@ config :hello, Hello.PromEx,
   disabled: false,
   manual_metrics_start_delay: :no_delay,
   drop_metrics_groups: [],
-  grafana: [
-    host: "http://grafana:3000",
-    username: "admin",
-    password: "admin",
-    upload_dashboards_on_start: true,
-    annotate_app_lifecycle: true
-  ],
+  grafana: Helpers.get_grafana_config(),
   metrics_server: :disabled
 
 # Configures the mailer
