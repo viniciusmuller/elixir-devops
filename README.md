@@ -1,8 +1,5 @@
+# Elixir Devops
+Creating CI pipelines and adding observability to a Phoenix application.
+
 # TODO
-- Configure formatter
-- Add linter (credo)
-- GitHub actions with test + linting
-
-# Maybe
-- Add coverage
-
+- Upload release to a container registry
